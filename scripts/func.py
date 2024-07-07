@@ -1,9 +1,22 @@
 from datetime import datetime 
 import requests
 
+def add_timestamp(func):
+    def wrapper(*args):
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        new_args = (f'[{timestamp}] - {args[0]}',)
+        return func(*new_args)
+    return wrapper
 
-def bad_request_info(company, timestamp, func):
-    print(f'[{timestamp}] {company}: 400 bad request - function: {func.__name__}')
+
+@add_timestamp
+def bad_request_info(company, func):
+    print(f'{company}: 400 bad request - function: {func.__name__}')
+
+
+@add_timestamp
+def print_with_timestamp(*args):
+    print(*args)
 
 
 def get_data(company: str, key: str):
@@ -20,8 +33,7 @@ def get_data(company: str, key: str):
         last_refreshed = data['Meta Data']['3. Last Refreshed']
 
     except KeyError:
-        now = datetime.now()
-        bad_request_info(company, now, get_data)
+        print_with_timestamp(f'{company}: 400 bad request - function: {get_data.__name__}')
         raise KeyError
 
     results = {
@@ -52,8 +64,7 @@ def get_market_capitaliztation(company: str, key: str):
     try:
         results = int(data["MarketCapitalization"])
     except KeyError:
-        now = datetime.now()
-        bad_request_info(company, now, get_market_capitaliztation)
+        print_with_timestamp(f'{company}: 400 bad request - function: {get_market_capitaliztation.__name__}')
         raise KeyError
 
     return results
