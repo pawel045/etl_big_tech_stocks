@@ -1,3 +1,8 @@
-scripts/secret_keys.py
-venv
+.gitignore
+etl/scripts/secret_keys.py
+.venv
 stocks-428319-a9e884842218.json
+gcs
+etl/__pycache__
+etl/scripts/__pycache__
+.pytest_cache
