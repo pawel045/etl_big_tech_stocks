@@ -2,6 +2,18 @@
 
 This project implements an ETL (Extract, Transform, Load) pipeline for processing and analyzing stock data of major technology companies, including Google, Amazon, Apple, Meta, and Microsoft. The pipeline is designed to collect daily stock data, transform it, and load it into a database or other data storage solutions for further analysis.
 
+## Example results
+### Tech Big 5 Report 10-2024
+
+| stock_date  | google  | amazon  | apple  | meta    | microsoft |
+|-------------|---------|---------|--------|---------|-----------|
+| 2024-10-01  | 172.3   | 202.8   | 243.1  | 617.4   | 432.7     |
+| 2024-10-02  | 168.7   | 198.5   | 239.9  | 622.6   | 428.3     |
+| 2024-10-03  | 170.1   | 201.2   | 240.4  | 619.8   | 431.5     |
+| 2024-10-04  | 169.9   | 200.7   | 238.6  | 623.1   | 429.2     |
+
+<br>
+
 ## Setup
 
 To get started with this project, you'll need to install the necessary dependencies.
